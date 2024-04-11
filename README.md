@@ -1,6 +1,6 @@
 # El-Doctor-Project
 
-Linux project nr 3
+## Linux project 3
 
 
 - Module: **Scripting** 
@@ -23,3 +23,5 @@ You will have multiple days to make it as **useful** (_collect the data you want
 - Send yourself a system report once a week.
 
 In order to validate this challenge, you must have a repository containing your script and its documentation along with your script. 
+
+------------------------------------------------------------------------
