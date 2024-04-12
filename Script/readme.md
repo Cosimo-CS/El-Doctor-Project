@@ -1,7 +1,7 @@
 Full script here
 
 
-    ´´´bash
+    ´´´
 
     #!/bin/bash
 
