@@ -5,7 +5,7 @@
 > - Linux distribution (F.E on Virtual Machine)
 >
 >
-> ## In Gmail
+## In Gmail
 >
 > Connect to your google account and go to your gmail. After that just follow the next images to configure your password app.  
 >
