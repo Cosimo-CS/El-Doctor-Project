@@ -42,7 +42,7 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
     echo "$cpu_usage%"
 
     }
-
+------------------------
 - get_cpu_usage(): Shell function declaration. Defines the function named "get_cpu_usage";
 - { : Opening curly brace indicating the beginning of the function body;
   
@@ -53,7 +53,7 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - awk '/Cpu\(s\)/{print $2}': Uses awk to search for lines containing "Cpu(s)" and prints the second field (which contains the CPU usage percentage). The awk pattern /Cpu\(s\)/ looks for lines containing "Cpu(s)" (the backslashes are used to escape parentheses in the regular expression).
 - cpu_percent=$(...): Assigns the output of the awk command (CPU usage percentage) to the variable cpu_percent.
 
-
+------------------------
 ## Function to collect memory usage
 
     get_memory_usage() {
