@@ -302,10 +302,10 @@ write_to_csv() {
     }
 
 ----------------------------
-- write_to_html(): This is a shell function declaration. It defines a function named write_to_html.
+- write_to_html(): Shell function declaration. It defines a function named "write_to_html".
 - {: Opening curly brace indicating the beginning of the function body.
 - local date_time cpu_usage memory_usage disk_usage users_logged_in top_cpu_processes users_details --> This line declares local variables within the function scope. These variables will be used to store various system metrics.
-""
+
 - date_time=$(date "+%Y-%m-%d %H:%M"),
 - cpu_usage=$(get_cpu_usage),
 - memory_usage=$(get_memory_usage),
@@ -315,7 +315,7 @@ write_to_csv() {
 - users_details=$(get_users_details):
 
 These commands retrieve the current date and time, CPU usage, memory usage, disk usage, number of users logged in, top CPU-consuming processes, and user details, and assign them to their respective variables.
-""
+
 ----------------------------
 
 
