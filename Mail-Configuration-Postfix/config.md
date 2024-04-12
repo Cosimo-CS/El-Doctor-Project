@@ -200,10 +200,19 @@ Port 587 is commonly used for email submission. Unlike port 25, which is traditi
       </html>" > system_metrics.html
       }
 
+- Launch your script and check if you well received your e-mail.
+
+![alt text](../img/postfix-6.png)
 
 ## Extra : Crontab configuration
 
+- Launch crontab: if it's the 1st time choose vim or nano to editing.
 
+      crontab -e
+
+- Configuration:
+
+      0 9 * * 1 /home/user/Project-ElDoctor/monitoring-tool.sh
 
 ## Source:
 
