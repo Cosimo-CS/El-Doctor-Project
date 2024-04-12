@@ -26,10 +26,9 @@ In order to validate this challenge, you must have a repository containing your 
 
 ------------------------------------------------------------------------
 
-Having seen the basics of monitoring during project nr 2, I went straight to work on my script, which I worked on as and when I needed it and the information I needed to provide.
-
 # Description of the full script part by part.
 
+Having seen the basics of monitoring during project nr 2, I went straight to work on my script, which I worked on as and when I needed it and the information I needed to provide.
 
 ## Function to collect CPU usage
 
@@ -53,6 +52,13 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - awk '/Cpu\(s\)/{print $2}': Uses awk to search for lines containing "Cpu(s)" and prints the second field (which contains the CPU usage percentage). The awk pattern /Cpu\(s\)/ looks for lines containing "Cpu(s)" (the backslashes are used to escape parentheses in the regular expression).
 - cpu_percent=$(...): Assigns the output of the awk command (CPU usage percentage) to the variable cpu_percent.
 
+### cpu_usage=$(printf "%.0f" "$cpu_percent"): This command formats the CPU usage percentage as an integer (rounding to the nearest whole number). Here's what it does:
+
+- printf "%.0f" "$cpu_percent": Uses printf to format the value of cpu_percent as a floating-point number with zero decimal places (%.0f). This effectively rounds the value to the nearest whole number.
+- cpu_usage=$(...): Assigns the formatted CPU usage percentage to the variable cpu_usage.
+- echo "$cpu_usage%": This command echoes (prints) the formatted CPU usage percentage with a "%" symbol appended to it.
+- }: Closing curly brace indicating the end of the function body.
+
 ------------------------
 ## Function to collect memory usage
 
@@ -63,9 +69,9 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
     echo "$memory_percent%"
 
     }
+------------------------
 
-
-
+------------------------
 ## Function to collect disk usage
 
     get_disk_usage() {
@@ -75,9 +81,9 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
     echo "$disk_usage_percent%"
 
     }
+------------------------
 
-
-
+------------------------
 ## Function to get detailed information about users logged in
 
     get_users_details() {
@@ -87,9 +93,9 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
     echo "$users_details"
 
     }
+------------------------
 
-
-
+------------------------
 ## Function to get number of users logged in
 
     get_users_logged_in() {
@@ -99,9 +105,9 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
     echo "$users_logged_in"
 
     }
+------------------------
 
-
-
+------------------------
 ## Function to get top 10 CPU-consuming processes filtered by process name
 
     get_top_cpu_processes() {
@@ -111,9 +117,9 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
     echo "$top_processes"
 
     }
+------------------------
 
-
-
+------------------------
 
 
 
