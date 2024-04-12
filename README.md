@@ -107,7 +107,8 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - df -h --output=pcent /: Runs the df command to display information about the disk space usage for the root filesystem ("/"). The -h option formats sizes in a human-readable format, and the --output=pcent option specifies that only the percentage of disk usage should be output.
 - |: Pipe operator, redirects the output of the df command to the input of the awk command.
 
-### awk 'NR==2{sub("%","",$1); print $1}': Uses awk to process the second line (NR==2) of the df command output. It removes the "%" symbol from the first field ($1) using the sub() function, then prints the modified field. This field contains the disk usage percentage.
+### awk 'NR==2{sub("%","",$1); print $1}': 
+- Uses awk to process the second line (NR==2) of the df command output. It removes the "%" symbol from the first field ($1) using the sub() function, then prints the modified field. This field contains the disk usage percentage.
 
 - disk_usage_percent=$(...): Assigns the disk usage percentage to the variable disk_usage_percent.
 - echo "$disk_usage_percent%": This command echoes (prints) the disk usage percentage with a "%" symbol appended to it.
