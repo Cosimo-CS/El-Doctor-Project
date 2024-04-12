@@ -30,6 +30,9 @@ In order to validate this challenge, you must have a repository containing your 
 
 Having seen the basics of monitoring during project nr 2, I went straight to work on my script, which I worked on as and when I needed it and the information I needed to provide.
 
+- To see the full script [Script](Mail-Configuration-Postfix)
+- To check the Gmail configuration with Postfix --> [Mail-Configuration-Postfix](Mail-Configuration-Postfix)
+
 ![alt text](/img/script-brut.png)
 
 ## Function to collect CPU usage
