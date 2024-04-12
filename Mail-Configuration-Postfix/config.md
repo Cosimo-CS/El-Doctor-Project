@@ -84,7 +84,7 @@
 >
 #### Creation of SSL certificate
 
-> - **1st**: Create a directory in the following path: /etc/postfix/ssl/
+- **1st**: Create a directory in the following path: /etc/postfix/ssl/
 >
 >       sudo mkdir /etc/postfix/ssl/
 >
