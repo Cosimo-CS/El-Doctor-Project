@@ -181,9 +181,9 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 
 ### awk '/^ *[0-9]+/ {print $9,$12}':
 
-- Uses awk to process lines starting with one or more spaces followed by digits (/^ *[0-9]+/). It prints the ninth and twelfth fields, which typically contain the CPU usage and process name, respectively.
+- Uses awk to process lines starting with one or more spaces followed by digits (/^ *[0-9]+/). It prints the ninth and twelfth fields, which typically contain the CPU usage and process name.
 
-- |: Pipe operator, redirects the output of the awk command to the input of the sort command.
+- |: Pipe operator, redirects the output of the 'awk' command to the input of the 'sort' command.
 - sort -nr: Sorts the input numerically (-n) in reverse order (-r). This sorts the CPU usage in descending order, ensuring the most CPU-consuming processes appear first.
 - |: Pipe operator, redirects the output of the sort command to the input of the head command.
 - head -n 10: Outputs the first 10 lines of the sorted output, which represent the top 10 CPU-consuming processes.
@@ -192,7 +192,131 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - echo "$top_processes": This command echoes (prints) the information about the top CPU-consuming processes.
 - }: Closing curly brace indicating the end of the function body.
 ------------------------
+## Function to write data to CSV file
 
+write_to_csv() {
+
+    local date_time cpu_usage memory_usage disk_usage users_logged_in top_cpu_processes users_details
+
+
+
+    date_time=$(date "+%Y-%m-%d %H:%M")
+
+    cpu_usage=$(get_cpu_usage)
+
+    memory_usage=$(get_memory_usage)
+
+    disk_usage=$(get_disk_usage)
+
+    users_logged_in=$(get_users_logged_in)
+
+    top_cpu_processes=$(get_top_cpu_processes)
+
+    users_details=$(get_users_details)
+
+
+
+    echo "Date and Time,CPU Usage,Memory Usage,Disk Usage,Users Logged In,User Details" >> system_metrics.csv
+
+    echo "$date_time,$cpu_usage,$memory_usage,$disk_usage,$users_logged_in,$users_details" >> system_metrics.csv
+
+    echo "Top 10 CPU-consuming processes:" >> system_metrics.csv
+
+    echo "$top_cpu_processes" >> system_metrics.csv
+
+    }
+
+----------------------------
+- local date_time cpu_usage memory_usage disk_usage users_logged_in top_cpu_processes users_details: This line declares local variables within the function scope. These variables will be used to store various system metrics.
+
+- date_time=$(date "+%Y-%m-%d %H:%M"): This command retrieves the current date and time in the format "YYYY-MM-DD HH:MM" using the date command and assigns it to the variable date_time.
+
+- cpu_usage=$(get_cpu_usage), memory_usage=$(get_memory_usage), disk_usage=$(get_disk_usage), users_logged_in=$(get_users_logged_in), top_cpu_processes=$(get_top_cpu_processes), users_details=$(get_users_details): These commands call respective functions to retrieve CPU usage, memory usage, disk usage, number of users logged in, top CPU-consuming processes, and user details, and assign the results to their respective variables.
+
+- echo "Date and Time,CPU Usage,Memory Usage,Disk Usage,Users Logged In,User Details" >> system_metrics.csv: This command appends a header line to the system_metrics.csv file, specifying the names of the metrics being recorded.
+
+- echo "$date_time,$cpu_usage,$memory_usage,$disk_usage,$users_logged_in,$users_details" >> system_metrics.csv: This command appends a line to the system_metrics.csv file containing the current date and time, CPU usage, memory usage, disk usage, number of users logged in, and user details, separated by commas.
+
+- echo "Top 10 CPU-consuming processes:" >> system_metrics.csv: This command appends a line to the system_metrics.csv file indicating the start of the section containing the top 10 CPU-consuming processes.
+
+- echo "$top_cpu_processes" >> system_metrics.csv: This command appends the information about the top CPU-consuming processes retrieved earlier to the system_metrics.csv file.
+----------------------------
+## Function to write data to HTML file
+
+    write_to_html() {
+
+    local date_time cpu_usage memory_usage disk_usage users_logged_in top_cpu_processes users_details
+
+
+
+    date_time=$(date "+%Y-%m-%d %H:%M")
+
+    cpu_usage=$(get_cpu_usage)
+
+    memory_usage=$(get_memory_usage)
+
+    disk_usage=$(get_disk_usage)
+
+    users_logged_in=$(get_users_logged_in)
+
+    top_cpu_processes=$(get_top_cpu_processes)
+
+    users_details=$(get_users_details)
+
+
+
+    echo "<html>
+
+    <head>
+
+        <title>System Metrics Report</title>
+
+    </head>
+
+    <body>
+
+        <h1>System Metrics Report</h1>
+
+        <p>Date and Time: $date_time</p>
+
+        <p>CPU Usage: $cpu_usage</p>
+
+        <p>Memory Usage: $memory_usage</p>
+
+        <p>Disk Usage: $disk_usage</p>
+
+        <p>Users Logged In: $users_logged_in</p>
+
+        <p>User Details:</p>
+
+        <pre>$users_details</pre>
+
+        <h2>Top 10 CPU-consuming processes:</h2>
+
+        <pre>$top_cpu_processes</pre>
+
+    </body>
+
+    </html>" > system_metrics.html
+
+    }
+
+----------------------------
+- write_to_html(): This is a shell function declaration. It defines a function named write_to_html.
+- {: Opening curly brace indicating the beginning of the function body.
+- local date_time cpu_usage memory_usage disk_usage users_logged_in top_cpu_processes users_details --> This line declares local variables within the function scope. These variables will be used to store various system metrics.
+""
+- date_time=$(date "+%Y-%m-%d %H:%M"),
+- cpu_usage=$(get_cpu_usage),
+- memory_usage=$(get_memory_usage),
+- disk_usage=$(get_disk_usage),
+- users_logged_in=$(get_users_logged_in),
+- top_cpu_processes=$(get_top_cpu_processes),
+- users_details=$(get_users_details):
+
+These commands retrieve the current date and time, CPU usage, memory usage, disk usage, number of users logged in, top CPU-consuming processes, and user details, and assign them to their respective variables.
+""
+----------------------------
 
 
 
