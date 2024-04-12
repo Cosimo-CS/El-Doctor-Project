@@ -1,7 +1,7 @@
 Full script here
 
 
-´´´bash
+    ´´´bash
 
     #!/bin/bash
 
@@ -17,7 +17,7 @@ Full script here
 
     echo "$cpu_usage%"
 
-}
+    }
 
 
 
