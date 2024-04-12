@@ -318,5 +318,57 @@ These commands retrieve the current date and time, CPU usage, memory usage, disk
 
 ----------------------------
 
+## Function to send email with HTML content (Insert your credentials!)
+
+    send_email() {
+
+    cat system_metrics.html | mail -s "System Metrics Report" -a "Content-Type: text/html" YOUR_MAIL_ADDRESS@DOMAIN.com
+
+    }
+----------------------------
+- send_email(): This is a shell function declaration. It defines a function named send_email.
+- {: Opening curly brace indicating the beginning of the function body.
+- cat system_metrics.html: This command reads the contents of the system_metrics.html file.
+- |: Pipe operator, redirects the output of the cat command to the input of the mail command.
+
+### mail -s "System Metrics Report" -a "Content-Type: text/html" example09@gmail.com:
+
+- This command sends an email with the contents of the system_metrics.html file as the body. Here's what each part does:
+- -s "System Metrics Report": Specifies the subject of the email as "System Metrics Report".
+- -a "Content-Type: text/html": Adds an attachment with the MIME type set to text/html, indicating that the email contains HTML content.
+- example@gmail.com: Specifies the recipient email address.
+- }: Closing curly brace indicating the end of the function body.
+----------------------------
+
+## Main function
+
+    main() {
+
+    echo "Collecting system metrics..."
+
+    write_to_csv
+
+    write_to_html
+
+    send_email
+
+    }
+
+
+
+    # Run the main function
+
+    main
+
+----------------------------
+- main(): Shell function declaration. It defines a function named main.
+- {: Opening curly brace indicating the beginning of the function body.
+- echo "Collecting system metrics...": This command displays the message "Collecting system metrics..." to indicate that the process of gathering system metrics is starting.
+- write_to_csv: This command invokes the write_to_csv function, which collects system metrics and writes them to a CSV file.
+- write_to_html: This command invokes the write_to_html function, which generates an HTML report containing system metrics and saves it to an HTML file.
+- send_email: This command invokes the send_email function, which sends an email with the system metrics report attached as HTML content.
+- }: Closing curly brace indicating the end of the function body.
+- main: This line outside the function definition calls the main() function, initiating the execution of the script.
+----------------------------
 
 
