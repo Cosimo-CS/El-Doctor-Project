@@ -28,10 +28,10 @@ In order to validate this challenge, you must have a repository containing your 
 
 Having seen the basics of monitoring during project nr 2, I went straight to work on my script, which I worked on as and when I needed it and the information I needed to provide.
 
-Let's describe the script.
+# Description of the full script part by part.
 
 
-# Function to collect CPU usage
+## Function to collect CPU usage
 
     get_cpu_usage() {
 
@@ -43,9 +43,18 @@ Let's describe the script.
 
     }
 
+- get_cpu_usage(): Shell function declaration. Defines the function named "get_cpu_usage";
+- { : Opening curly brace indicating the beginning of the function body;
+  
+## cpu_percent=$(top -bn1 | awk '/Cpu\(s\)/{print $2}'): This command collects CPU usage information using the top command. Here's what it does:
+
+- top -bn1: Runs the top command in batch mode (-b), for one iteration only (-n1).
+- |: Pipe operator, redirects the output of the top command to the input of the awk command.
+- awk '/Cpu\(s\)/{print $2}': Uses awk to search for lines containing "Cpu(s)" and prints the second field (which contains the CPU usage percentage). The awk pattern /Cpu\(s\)/ looks for lines containing "Cpu(s)" (the backslashes are used to escape parentheses in the regular expression).
+- cpu_percent=$(...): Assigns the output of the awk command (CPU usage percentage) to the variable cpu_percent.
 
 
-# Function to collect memory usage
+## Function to collect memory usage
 
     get_memory_usage() {
 
@@ -57,7 +66,7 @@ Let's describe the script.
 
 
 
-# Function to collect disk usage
+## Function to collect disk usage
 
     get_disk_usage() {
 
@@ -69,7 +78,7 @@ Let's describe the script.
 
 
 
-# Function to get detailed information about users logged in
+## Function to get detailed information about users logged in
 
     get_users_details() {
 
@@ -81,7 +90,7 @@ Let's describe the script.
 
 
 
-# Function to get number of users logged in
+## Function to get number of users logged in
 
     get_users_logged_in() {
 
@@ -93,7 +102,7 @@ Let's describe the script.
 
 
 
-# Function to get top 10 CPU-consuming processes filtered by process name
+## Function to get top 10 CPU-consuming processes filtered by process name
 
     get_top_cpu_processes() {
 
