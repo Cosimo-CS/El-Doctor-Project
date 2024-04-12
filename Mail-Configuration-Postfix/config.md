@@ -14,7 +14,7 @@ Connect to your google account and go to your gmail. After that just follow the 
 
 #### Steps on gmail
 
-![alt text](img/gmail-1.png)
+![alt text](Mail-Configuration-Postfix/img/gmail-1.png)
 
 ![alt text](img/gmail-2.png)
 
