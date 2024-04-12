@@ -1,7 +1,8 @@
 # How to configure free gmail SMTP on Linux and send your emails with Postfix
 
-Prerequisites: - A gmail address with dual authentication enabled 
-               - Linux distribution (F.E on Virtual Machine)
+Prerequisites: 
+- A gmail address with dual authentication enabled 
+- Linux distribution (F.E on Virtual Machine)
 
 
 ## In Gmail
