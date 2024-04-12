@@ -12,6 +12,24 @@ Connect to your google account and go to your gmail. After that just follow the 
 - /!\ Keep well the password created somewhere else, you will need it to configure a file in your Linux system.
 - /!\ If you don't find by the way that I'm showing you just go in your "Google account settings" and on the research bar type: _app password_ and you will find it straight away. (Check the last picture)
 
+#### Steps on gmail
+
+![alt text](img/gmail-1.png)
+
+![alt text](img/gmail-2.png)
+
+![alt text](img/gmail-3.png)
+
+![alt text](img/gmail-4.png)
+
+![alt text](img/gmail-5.png)
+
+![alt text](img/gmail-6.png)
+
+Other way to access:
+
+![alt text](img/gmail-solution.png)
+
 
 ## Source:
 
