@@ -1,4 +1,4 @@
-Full script here (Pay attention to just change the mail addresse at line 186)
+# Full script here (Pay attention to just change the mail addresse at line 186)
 
 
     
