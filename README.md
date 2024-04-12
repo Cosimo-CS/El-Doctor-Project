@@ -45,14 +45,16 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - get_cpu_usage(): Shell function declaration. Defines the function named "get_cpu_usage";
 - { : Opening curly brace indicating the beginning of the function body;
   
-### cpu_percent=$(top -bn1 | awk '/Cpu\(s\)/{print $2}'): This command collects CPU usage information using the top command. Here's what it does:
+### cpu_percent=$(top -bn1 | awk '/Cpu\(s\)/{print $2}'): 
+- This command collects CPU usage information using the top command. Here's what it does:
 
 - top -bn1: Runs the top command in batch mode (-b), for one iteration only (-n1).
 - |: Pipe operator, redirects the output of the top command to the input of the awk command.
 - awk '/Cpu\(s\)/{print $2}': Uses awk to search for lines containing "Cpu(s)" and prints the second field (which contains the CPU usage percentage). The awk pattern /Cpu\(s\)/ looks for lines containing "Cpu(s)" (the backslashes are used to escape parentheses in the regular expression).
 - cpu_percent=$(...): Assigns the output of the awk command (CPU usage percentage) to the variable cpu_percent.
 
-### cpu_usage=$(printf "%.0f" "$cpu_percent"): This command formats the CPU usage percentage as an integer (rounding to the nearest whole number). Here's what it does:
+### cpu_usage=$(printf "%.0f" "$cpu_percent"): 
+- This command formats the CPU usage percentage as an integer (rounding to the nearest whole number). Here's what it does:
 
 - printf "%.0f" "$cpu_percent": Uses printf to format the value of cpu_percent as a floating-point number with zero decimal places (%.0f). This effectively rounds the value to the nearest whole number.
 - cpu_usage=$(...): Assigns the formatted CPU usage percentage to the variable cpu_usage.
@@ -73,12 +75,14 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - get_memory_usage(): This is a shell function declaration. It defines a function named get_memory_usage.
 - {: Opening curly brace indicating the beginning of the function body.
 
-### memory_percent=$(free -m | awk 'NR==2{print $3*100/$2}'): This command calculates the memory usage percentage. Here's what it does:
+### memory_percent=$(free -m | awk 'NR==2{print $3*100/$2}'): 
+- This command calculates the memory usage percentage. Here's what it does:
 
 - free -m: Runs the free command to display the amount of free and used memory in megabytes (-m).
 - |: Pipe operator, redirects the output of the free command to the input of the awk command.
 
-### awk 'NR==2{print $3*100/$2}': Uses awk to process the second line (NR==2) of the free command output. It calculates the memory usage percentage by dividing the used memory ($3) by the total memory ($2), then multiplying by 100 to get a percentage.
+### awk 'NR==2{print $3*100/$2}': 
+- Uses awk to process the second line (NR==2) of the free command output. It calculates the memory usage percentage by dividing the used memory ($3) by the total memory ($2), then multiplying by 100 to get a percentage.
 
 - memory_percent=$(...): Assigns the calculated memory usage percentage to the variable memory_percent.
 - echo "$memory_percent%": This command echoes (prints) the memory usage percentage with a "%" symbol appended to it.
@@ -97,7 +101,8 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - get_disk_usage(): This is a shell function declaration. It defines a function named get_disk_usage.
 - {: Opening curly brace indicating the beginning of the function body.
 
-### disk_usage_percent=$(df -h --output=pcent / | awk 'NR==2{sub("%","",$1); print $1}'): This command retrieves the disk usage percentage for the root filesystem ("/"). Here's what it does:
+### disk_usage_percent=$(df -h --output=pcent / | awk 'NR==2{sub("%","",$1); print $1}'): 
+- This command retrieves the disk usage percentage for the root filesystem ("/"). Here's what it does:
 
 - df -h --output=pcent /: Runs the df command to display information about the disk space usage for the root filesystem ("/"). The -h option formats sizes in a human-readable format, and the --output=pcent option specifies that only the percentage of disk usage should be output.
 - |: Pipe operator, redirects the output of the df command to the input of the awk command.
@@ -121,7 +126,8 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - get_users_details(): This is a shell function declaration. It defines a function named get_users_details.
 - {: Opening curly brace indicating the beginning of the function body.
 
-### users_details=$(who | awk '{print $1 " " $3 " " $4}'): This command collects detailed information about users who are currently logged in. Here's what it does:
+### users_details=$(who | awk '{print $1 " " $3 " " $4}'): 
+- This command collects detailed information about users who are currently logged in. Here's what it does:
 
 - who: Runs the who command to display information about currently logged-in users.
 - |: Pipe operator, redirects the output of the who command to the input of the awk command.
@@ -143,7 +149,8 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - get_users_logged_in(): Shell function declaration. It defines a function named get_users_logged_in.
 - {: Opening curly brace indicating the beginning of the function body.
 
-### users_logged_in=$(who | wc -l): This command counts the number of currently logged-in users. Here's what it does:
+### users_logged_in=$(who | wc -l): 
+- This command counts the number of currently logged-in users. Here's what it does:
 
 - who: Executes the who command to list the currently logged-in users.
 - |: Pipe operator, redirects the output of the who command to the input of the wc command.
@@ -165,12 +172,16 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - get_top_cpu_processes(): This is a shell function declaration. It defines a function named get_top_cpu_processes.
 - {: Opening curly brace indicating the beginning of the function body.
 
-### top_processes=$(top -bn1 | awk '/^ *[0-9]+/ {print $9,$12}' | sort -nr | head -n 10): This command retrieves information about the top 10 CPU-consuming processes. Here's what it does:
+### top_processes=$(top -bn1 | awk '/^ *[0-9]+/ {print $9,$12}' | sort -nr | head -n 10)
+- This command retrieves information about the top 10 CPU-consuming processes. Here's what it does:
 
 - top -bn1: Runs the top command in batch mode (-b) for one iteration only (-n1).
 - |: Pipe operator, redirects the output of the top command to the input of the awk command.
 
-### awk '/^ *[0-9]+/ {print $9,$12}': Uses awk to process lines starting with one or more spaces followed by digits (/^ *[0-9]+/). It prints the ninth and twelfth fields, which typically contain the CPU usage and process name, respectively.
+### awk '/^ *[0-9]+/ {print $9,$12}':
+
+- Uses awk to process lines starting with one or more spaces followed by digits (/^ *[0-9]+/). It prints the ninth and twelfth fields, which typically contain the CPU usage and process name, respectively.
+
 - |: Pipe operator, redirects the output of the awk command to the input of the sort command.
 - sort -nr: Sorts the input numerically (-n) in reverse order (-r). This sorts the CPU usage in descending order, ensuring the most CPU-consuming processes appear first.
 - |: Pipe operator, redirects the output of the sort command to the input of the head command.
