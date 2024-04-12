@@ -94,7 +94,19 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 
     }
 ------------------------
+- get_disk_usage(): This is a shell function declaration. It defines a function named get_disk_usage.
+- {: Opening curly brace indicating the beginning of the function body.
 
+### disk_usage_percent=$(df -h --output=pcent / | awk 'NR==2{sub("%","",$1); print $1}'): This command retrieves the disk usage percentage for the root filesystem ("/"). Here's what it does:
+
+- df -h --output=pcent /: Runs the df command to display information about the disk space usage for the root filesystem ("/"). The -h option formats sizes in a human-readable format, and the --output=pcent option specifies that only the percentage of disk usage should be output.
+- |: Pipe operator, redirects the output of the df command to the input of the awk command.
+
+### awk 'NR==2{sub("%","",$1); print $1}': Uses awk to process the second line (NR==2) of the df command output. It removes the "%" symbol from the first field ($1) using the sub() function, then prints the modified field. This field contains the disk usage percentage.
+
+- disk_usage_percent=$(...): Assigns the disk usage percentage to the variable disk_usage_percent.
+- echo "$disk_usage_percent%": This command echoes (prints) the disk usage percentage with a "%" symbol appended to it.
+- }: Closing curly brace indicating the end of the function body.
 ------------------------
 ## Function to get detailed information about users logged in
 
@@ -106,7 +118,17 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 
     }
 ------------------------
+- get_users_details(): This is a shell function declaration. It defines a function named get_users_details.
+- {: Opening curly brace indicating the beginning of the function body.
 
+### users_details=$(who | awk '{print $1 " " $3 " " $4}'): This command collects detailed information about users who are currently logged in. Here's what it does:
+
+- who: Runs the who command to display information about currently logged-in users.
+- |: Pipe operator, redirects the output of the who command to the input of the awk command.
+- awk '{print $1 " " $3 " " $4}': Uses awk to process each line of the who command output. It prints the first field (username, $1), the third field (terminal or display where the user is logged in, $3), and the fourth field (time of login, $4), separated by spaces.
+- users_details=$(...): Assigns the collected user details to the variable users_details.
+- echo "$users_details": This command echoes (prints) the collected user details.
+- }: Closing curly brace indicating the end of the function body.
 ------------------------
 ## Function to get number of users logged in
 
@@ -118,7 +140,17 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 
     }
 ------------------------
+- get_users_logged_in(): Shell function declaration. It defines a function named get_users_logged_in.
+- {: Opening curly brace indicating the beginning of the function body.
 
+### users_logged_in=$(who | wc -l): This command counts the number of currently logged-in users. Here's what it does:
+
+- who: Executes the who command to list the currently logged-in users.
+- |: Pipe operator, redirects the output of the who command to the input of the wc command.
+- wc -l: Counts the number of lines in the input.
+- users_logged_in=$(...): Assigns the count of logged-in users to the variable users_logged_in.
+- echo "$users_logged_in": This command echoes (prints) the count of logged-in users.
+- }: Closing curly brace indicating the end of the function body.
 ------------------------
 ## Function to get top 10 CPU-consuming processes filtered by process name
 
@@ -130,7 +162,23 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 
     }
 ------------------------
+- get_top_cpu_processes(): This is a shell function declaration. It defines a function named get_top_cpu_processes.
+- {: Opening curly brace indicating the beginning of the function body.
 
+### top_processes=$(top -bn1 | awk '/^ *[0-9]+/ {print $9,$12}' | sort -nr | head -n 10): This command retrieves information about the top 10 CPU-consuming processes. Here's what it does:
+
+- top -bn1: Runs the top command in batch mode (-b) for one iteration only (-n1).
+- |: Pipe operator, redirects the output of the top command to the input of the awk command.
+
+### awk '/^ *[0-9]+/ {print $9,$12}': Uses awk to process lines starting with one or more spaces followed by digits (/^ *[0-9]+/). It prints the ninth and twelfth fields, which typically contain the CPU usage and process name, respectively.
+- |: Pipe operator, redirects the output of the awk command to the input of the sort command.
+- sort -nr: Sorts the input numerically (-n) in reverse order (-r). This sorts the CPU usage in descending order, ensuring the most CPU-consuming processes appear first.
+- |: Pipe operator, redirects the output of the sort command to the input of the head command.
+- head -n 10: Outputs the first 10 lines of the sorted output, which represent the top 10 CPU-consuming processes.
+- top_processes=$(...): Assigns the information about the top CPU-consuming processes to the variable top_processes.
+
+- echo "$top_processes": This command echoes (prints) the information about the top CPU-consuming processes.
+- }: Closing curly brace indicating the end of the function body.
 ------------------------
 
 
