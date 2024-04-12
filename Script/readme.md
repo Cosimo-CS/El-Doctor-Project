@@ -1,7 +1,7 @@
-Full script here
+Full script here (Pay attention to just change the mail addresse at line 186)
 
 
-    ´´´
+    
 
     #!/bin/bash
 
@@ -213,4 +213,4 @@ Full script here
 
 
 
-´´´
+
