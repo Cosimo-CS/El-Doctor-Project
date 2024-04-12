@@ -46,7 +46,7 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 - get_cpu_usage(): Shell function declaration. Defines the function named "get_cpu_usage";
 - { : Opening curly brace indicating the beginning of the function body;
   
-## cpu_percent=$(top -bn1 | awk '/Cpu\(s\)/{print $2}'): This command collects CPU usage information using the top command. Here's what it does:
+### cpu_percent=$(top -bn1 | awk '/Cpu\(s\)/{print $2}'): This command collects CPU usage information using the top command. Here's what it does:
 
 - top -bn1: Runs the top command in batch mode (-b), for one iteration only (-n1).
 - |: Pipe operator, redirects the output of the top command to the input of the awk command.
