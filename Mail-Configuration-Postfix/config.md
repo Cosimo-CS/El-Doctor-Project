@@ -16,19 +16,19 @@ Connect to your google account and go to your gmail. After that just follow the 
 
 ![alt text](../img/gmail-1.png)
 
-![alt text](img/gmail-2.png)
+![alt text](../img/gmail-2.png)
 
-![alt text](img/gmail-3.png)
+![alt text](../img/gmail-3.png)
 
-![alt text](img/gmail-4.png)
+![alt text](../img/gmail-4.png)
 
-![alt text](img/gmail-5.png)
+![alt text](../img/gmail-5.png)
 
-![alt text](img/gmail-6.png)
+![alt text](../img/gmail-6.png)
 
 Other way to access:
 
-![alt text](img/gmail-solution.png)
+![alt text](../img/gmail-solution.png)
 
 
 ## Source:
