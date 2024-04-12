@@ -30,6 +30,8 @@ In order to validate this challenge, you must have a repository containing your 
 
 Having seen the basics of monitoring during project nr 2, I went straight to work on my script, which I worked on as and when I needed it and the information I needed to provide.
 
+![alt text](/img/script-first-try.png)
+
 ## Function to collect CPU usage
 
     get_cpu_usage() {
