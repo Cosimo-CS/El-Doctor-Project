@@ -70,7 +70,19 @@ Having seen the basics of monitoring during project nr 2, I went straight to wor
 
     }
 ------------------------
+- get_memory_usage(): This is a shell function declaration. It defines a function named get_memory_usage.
+- {: Opening curly brace indicating the beginning of the function body.
 
+### memory_percent=$(free -m | awk 'NR==2{print $3*100/$2}'): This command calculates the memory usage percentage. Here's what it does:
+
+- free -m: Runs the free command to display the amount of free and used memory in megabytes (-m).
+- |: Pipe operator, redirects the output of the free command to the input of the awk command.
+
+### awk 'NR==2{print $3*100/$2}': Uses awk to process the second line (NR==2) of the free command output. It calculates the memory usage percentage by dividing the used memory ($3) by the total memory ($2), then multiplying by 100 to get a percentage.
+
+- memory_percent=$(...): Assigns the calculated memory usage percentage to the variable memory_percent.
+- echo "$memory_percent%": This command echoes (prints) the memory usage percentage with a "%" symbol appended to it.
+- }: Closing curly brace indicating the end of the function body.
 ------------------------
 ## Function to collect disk usage
 
