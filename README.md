@@ -28,7 +28,84 @@ In order to validate this challenge, you must have a repository containing your 
 
 Having seen the basics of monitoring during project nr 2, I went straight to work on my script, which I worked on as and when I needed it and the information I needed to provide.
 
-Let's unpack the script:
+Let's describe the script.
+
+
+# Function to collect CPU usage
+
+    get_cpu_usage() {
+
+    cpu_percent=$(top -bn1 | awk '/Cpu\(s\)/{print $2}')
+
+    cpu_usage=$(printf "%.0f" "$cpu_percent")
+
+    echo "$cpu_usage%"
+
+    }
+
+
+
+# Function to collect memory usage
+
+    get_memory_usage() {
+
+    memory_percent=$(free -m | awk 'NR==2{print $3*100/$2}')
+
+    echo "$memory_percent%"
+
+    }
+
+
+
+# Function to collect disk usage
+
+    get_disk_usage() {
+
+    disk_usage_percent=$(df -h --output=pcent / | awk 'NR==2{sub("%","",$1); print $1}')
+
+    echo "$disk_usage_percent%"
+
+    }
+
+
+
+# Function to get detailed information about users logged in
+
+    get_users_details() {
+
+    users_details=$(who | awk '{print $1 " " $3 " " $4}')
+
+    echo "$users_details"
+
+    }
+
+
+
+# Function to get number of users logged in
+
+    get_users_logged_in() {
+
+    users_logged_in=$(who | wc -l)
+
+    echo "$users_logged_in"
+
+    }
+
+
+
+# Function to get top 10 CPU-consuming processes filtered by process name
+
+    get_top_cpu_processes() {
+
+    top_processes=$(top -bn1 | awk '/^ *[0-9]+/ {print $9,$12}' | sort -nr | head -n 10)
+
+    echo "$top_processes"
+
+    }
+
+
+
+
 
 
 
