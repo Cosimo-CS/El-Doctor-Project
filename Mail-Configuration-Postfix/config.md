@@ -164,7 +164,41 @@ Port 587 is commonly used for email submission. Unlike port 25, which is traditi
 
 - The system it's working so I included a command with HTML part in the main bash script to receive the e-mail.
 
+      send_email() {
 
+      cat system_metrics.html | mail -s "System Metrics Report" -a "Content-Type: text/html" YOUR_MAIL_ADDRESS@DOMAIN.com
+
+      }
+
+      write_to_html() {
+
+      local date_time cpu_usage memory_usage disk_usage users_logged_in top_cpu_processes users_details
+      date_time=$(date "+%Y-%m-%d %H:%M")
+      cpu_usage=$(get_cpu_usage)
+      memory_usage=$(get_memory_usage)
+      disk_usage=$(get_disk_usage)
+      users_logged_in=$(get_users_logged_in)
+      top_cpu_processes=$(get_top_cpu_processes)
+      users_details=$(get_users_details)
+      echo "<html>
+      <head>
+      <title>System Metrics Report</title>
+      </head>
+
+      <body>
+      <h1>System Metrics Report</h1>
+      <p>Date and Time: $date_time</p>
+      <p>CPU Usage: $cpu_usage</p>
+      <p>Memory Usage: $memory_usage</p>
+      <p>Disk Usage: $disk_usage</p>
+      <p>Users Logged In: $users_logged_in</p>
+      <p>User Details:</p>
+      <pre>$users_details</pre>
+      <h2>Top 10 CPU-consuming processes:</h2>
+      <pre>$top_cpu_processes</pre>
+      </body>
+      </html>" > system_metrics.html
+      }
 
 
 ## Extra : Crontab configuration
